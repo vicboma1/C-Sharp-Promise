@@ -11,6 +11,15 @@ Inspired by Javascript promises.
 ## Recent Updates
 
 - 10 July 2016
+	- Test
+		- Assert
+		- Guard
+		- LinqExts
+		- Record
+		- PromisesTests
+	- Promise State Enum [PENDING - RESOLVED - REJECTED]
+
+- 9 July 2016
 	- Forked from Real-Serious-Games/C-Sharp-Promise
 	- Clean Code
 	- Refactors
