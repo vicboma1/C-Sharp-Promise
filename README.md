@@ -1,4 +1,4 @@
-# C Sharp Promise  ![Build Status](https://travis-ci.org/Real-Serious-Games/C-Sharp-Promise.svg) ![Version](https://img.shields.io/badge/.Net%20-3.5-blue.svg) ![Version Status](https://img.shields.io/badge/Unity%203D-5.3.5f1-blue.svg)
+# C Sharp Promise  ![Build Status](https://travis-ci.org/Real-Serious-Games/C-Sharp-Promise.svg) ![Version](https://img.shields.io/badge/.Net%20-3.5-blue.svg) ![Version Status](https://img.shields.io/badge/Unity%203D-5.3.5f1-blue.svg) ![Version](https://img.shields.io/badge/Mono-v4.0.30319-blue.svg)
 
 <a href="https://promisesaplus.com/">
     <img src="https://promisesaplus.com/assets/logo-small.png" alt="Promises/A+ logo"
