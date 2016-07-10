@@ -5,7 +5,7 @@ public class UtilsPromise
 {
 	public static TAccumulate Aggregate<TSource, TAccumulate>(IEnumerable<TSource> source, TAccumulate seed, Func<TAccumulate, TSource, TAccumulate> func) {
 		var result = seed;
-		foreach (TSource element in source)
+		foreach (var element in source)
 			result = func(result, element);
 		return result;
 	}
