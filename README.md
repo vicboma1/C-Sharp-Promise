@@ -17,7 +17,12 @@ Inspired by Javascript promises.
 		- LinqExts
 		- Record
 		- PromisesTests
-	- Promise State Enum [PENDING - RESOLVED - REJECTED]
+	- State Enum [PENDING - RESOLVED - REJECTED]
+	- Info [ID - NAME]
+	- Handler
+		- Reject
+		- Resolve
+
 
 - 9 July 2016
 	- Forked from Real-Serious-Games/C-Sharp-Promise
