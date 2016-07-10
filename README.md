@@ -12,6 +12,10 @@ Inspired by Javascript promises.
 
 - 10 July 2016
 	- Forked from Real-Serious-Games/C-Sharp-Promise
+	- Clean Code
+	- Refactors
+	- Optimizations
+	- Clevers
 
 ## Contents
 
