@@ -1,4 +1,4 @@
-# C-Sharp-Promise [![Build Status](https://travis-ci.org/Real-Serious-Games/C-Sharp-Promise.svg)](https://travis-ci.org/vicboma1/C-Sharp-Promise.svg?branch=master) #
+# C Sharp Promise  ![Build Status](https://travis-ci.org/Real-Serious-Games/C-Sharp-Promise.svg) ![Version](https://img.shields.io/badge/.Net%20-3.5-blue.svg) ![Version Status](https://img.shields.io/badge/Unity%203D-5.3.5f1-blue.svg)
 
 <a href="https://promisesaplus.com/">
     <img src="https://promisesaplus.com/assets/logo-small.png" alt="Promises/A+ logo"
@@ -6,17 +6,12 @@
 </a>
 
 Promises library for C# for management of asynchronous operations. 
-
-Inspired by Javascript promises, but slightly different.
-
-Used by [Real Serious Games](https://github.com/Real-Serious-Games/C-Sharp-Promise) for building serious games and simulations on Unity3d.
-
-If you are interested in using promises for game development and Unity please see [this article](http://www.what-could-possibly-go-wrong.com/promises-for-game-development/).  
+Inspired by Javascript promises.
 
 ## Recent Updates
 
-- 8 March 2015
-	- *Transform* function has been renamed to *Then* (another overload of *Then*).
+- 10 July 2016
+	- Forked from Real-Serious-Games/C-Sharp-Promise
 
 ## Contents
 
