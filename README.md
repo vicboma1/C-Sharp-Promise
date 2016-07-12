@@ -22,6 +22,7 @@ Inspired by Javascript promises.
 	- Handler
 		- Reject
 		- Resolve
+		- Catch
 
 
 - 9 July 2016
