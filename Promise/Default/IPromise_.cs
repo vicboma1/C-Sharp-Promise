@@ -94,4 +94,7 @@ public interface IPromise_
 	/// Returns a promise that resolves when the first of the promises has resolved.
 	/// </summary>
 	IPromise<T> Once<T>(Func<IEnumerable<IPromise<T>>> chain);
+
+ 	void Reject (Exception ex);
+	void Resolve ();
 }

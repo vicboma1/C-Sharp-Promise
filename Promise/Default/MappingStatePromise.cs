@@ -58,7 +58,6 @@ public class MappingStatePromise
 	}
 
 
-
 	public void InvokeRejectHandlers(Exception ex) {
 		if (rejectHandlers != null)
 			rejectHandlers.Each(handler => this.Get(PromiseStateEnum.REJECTED).Invoke( handler.rejectable,null, handler.callback, ex));
@@ -68,7 +67,7 @@ public class MappingStatePromise
 
 	public void InvokeResolveHandlers() {
 		if (resolveHandlers != null)
-			resolveHandlers.Each(handler =>this.Get(PromiseStateEnum.RESOLVED).Invoke(handler.rejectable, handler.callback, null,null));
+			resolveHandlers.Each(handler => this.Get(PromiseStateEnum.RESOLVED).Invoke(handler.rejectable, handler.callback, null,null));
 
 		ClearHandlers();
 	}

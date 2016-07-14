@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class Promise_ : IPromise_, IResolvable_, IPromiseInfo {
 
-
 	internal static int nextPromiseId = 0;
 	internal static HashSet<IPromiseInfo> pendingPromises = new HashSet<IPromiseInfo>();
 	internal static MappingStatePromise mappingStatePromise = MappingStatePromise.Create();
@@ -27,8 +26,11 @@ public class Promise_ : IPromise_, IResolvable_, IPromiseInfo {
 		return pendingPromises;
 	}
 
-	public Promise_() {
-		
+	public static IPromise_ Create(){
+		return new Promise_ ();
+	}
+
+	Promise_() {
 		this.State = PromiseStateEnum.PENDING;
 		if (EnablePromiseTracking)
 			pendingPromises.Add(this);
@@ -72,40 +74,33 @@ public class Promise_ : IPromise_, IResolvable_, IPromiseInfo {
 		mappingStatePromise.InvokeResolveHandlers();
 	}
 
+
 	public void Done(Action onResolved, Action<Exception> onRejected) {
 		Then(onResolved, onRejected)
-			.Catch(ex =>
-				Promise_.PropagateUnhandledException(this, ex)
-			);
+			.Catch(ex => Promise_.PropagateUnhandledException(this, ex) );
 	}
 
 	public void Done(Action onResolved) {
 		Then(onResolved)
-			.Catch(ex => 
-				Promise_.PropagateUnhandledException(this, ex)
-			);
+			.Catch(ex =>  Promise_.PropagateUnhandledException(this, ex) );
 	}
 
 	public void Done() {
 		Catch(ex => Promise_.PropagateUnhandledException(this, ex));
 	}
 
+
 	public IPromise_ Catch(Action<Exception> onRejected){
 		var resultPromise = new Promise_();
 
-		Action resolveHandler = () =>
-		{
-			resultPromise.Resolve();
-		};
-
-		Action<Exception> rejectHandler = ex =>
-		{
-			onRejected(ex);
-
-			resultPromise.Reject(ex);
-		};
-
-		ActionHandlers(resultPromise, resolveHandler, rejectHandler);
+		this.ActionHandlers(
+			resultPromise, 
+			() => resultPromise.Resolve() , 
+			ex => {
+				onRejected(ex);
+				resultPromise.Reject(ex); 
+			}
+		);
 
 		return resultPromise;
 	}
@@ -125,24 +120,22 @@ public class Promise_ : IPromise_, IResolvable_, IPromiseInfo {
 	public IPromise<Z> Then<Z>(Func<IPromise<Z>> onResolved, Action<Exception> onRejected) {
 		var resultPromise = new Promise<Z>();
 
-		Action resolveHandler = () =>
-		{
-			onResolved()
-				.Then(
-					(Z chainedValue) => resultPromise.Resolve(chainedValue),
-					ex => resultPromise.Reject(ex)
-				);
-		};
-
-		Action<Exception> rejectHandler = ex =>
-		{
-			if (onRejected != null)
-				onRejected(ex);
-
-			resultPromise.Reject(ex);
-		};
-
-		ActionHandlers(resultPromise, resolveHandler, rejectHandler);
+		this.ActionHandlers(
+			resultPromise,
+			() => { 
+				onResolved()
+					.Then(
+						(Z chainedValue) => resultPromise.Resolve(chainedValue),
+						ex => resultPromise.Reject(ex)
+					);
+			}
+			, 
+			ex => {
+				if (onRejected != null)
+					onRejected(ex);
+				
+				resultPromise.Reject(ex);
+			});
 
 		return resultPromise;
 	}
@@ -150,34 +143,26 @@ public class Promise_ : IPromise_, IResolvable_, IPromiseInfo {
 	public IPromise_ Then(Func<IPromise_> onResolved, Action<Exception> onRejected)
 	{
 		var resultPromise = new Promise_();
-
-		Action resolveHandler = () =>
-		{
-			if (onResolved != null)
-			{
-				onResolved()
-					.Then(
-						() => resultPromise.Resolve(),
-						ex => resultPromise.Reject(ex)
-					);
+	
+		ActionHandlers(resultPromise, 
+			() => {
+				if (onResolved != null)
+					onResolved()
+						.Then(
+							() => resultPromise.Resolve(),
+							ex => resultPromise.Reject(ex)
+						);
+				
+				else
+					resultPromise.Resolve();
+			}, 
+			ex => {
+				if (onRejected != null)
+					onRejected(ex);
+		
+				resultPromise.Reject(ex);
 			}
-			else
-			{
-				resultPromise.Resolve();
-			}
-		};
-
-		Action<Exception> rejectHandler = ex =>
-		{
-			if (onRejected != null)
-			{
-				onRejected(ex);
-			}
-
-			resultPromise.Reject(ex);
-		};
-
-		ActionHandlers(resultPromise, resolveHandler, rejectHandler);
+		);
 
 		return resultPromise;
 	}
@@ -313,13 +298,13 @@ public class Promise_ : IPromise_, IResolvable_, IPromiseInfo {
 		return resultPromise;
 	}
 
-	public static IPromise_ Resolved(){
+	private static IPromise_ Resolved(){
 		var promise = new Promise_ ();
 		promise.Resolve();
 		return promise;
 	}
 
-	public static IPromise_ Rejected(Exception ex) {
+	private static IPromise_ Rejected(Exception ex) {
 		var promise = new Promise_ ();
 		promise.Reject(ex);
 
