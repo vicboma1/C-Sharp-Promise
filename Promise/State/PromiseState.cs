@@ -1,6 +1,6 @@
 ﻿using System;
 
-public enum PromiseState {
+public enum PromiseStateEnum {
 	PENDING,
 	RESOLVED,
 	REJECTED

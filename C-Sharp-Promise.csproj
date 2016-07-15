@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -41,11 +41,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnumerableExt.cs" />
-    <Compile Include="PromiseTimer.cs" />
-    <Compile Include="Promise_NonGeneric.cs" />
-    <Compile Include="Promise.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Promise\Enumerable\EnumerablePromise.cs" />
+    <Compile Include="Promise\Exception\ExceptionEventArgs.cs" />
+    <Compile Include="Promise\Generic\IPromise.cs" />
+    <Compile Include="Promise\Generic\IRejectable.cs" />
+    <Compile Include="Promise\Generic\IResolvable.cs" />
+    <Compile Include="Promise\Generic\Promise.cs" />
+    <Compile Include="Promise\Handler\RejectHandler.cs" />
+    <Compile Include="Promise\Handler\ResolveHandler.cs" />
+    <Compile Include="Promise\Info\IPromiseInfo.cs" />
+    <Compile Include="Promise\State\PromiseState.cs" />
+    <Compile Include="Promise\Test\Assert.cs" />
+    <Compile Include="Promise\Test\Guard.cs" />
+    <Compile Include="Promise\Test\LinqExts.cs" />
+    <Compile Include="Promise\Test\PromiseTest.cs" />
+    <Compile Include="Promise\Test\Record.cs" />
+    <Compile Include="Promise\Utils\UtilsPromise.cs" />
+    <Compile Include="Promise\Default\IPromise_.cs" />
+    <Compile Include="Promise\Default\Promise_.cs" />
+    <Compile Include="Promise\Default\IResolvable_.cs" />
+    <Compile Include="Promise\Handler\Handler.cs" />
+    <Compile Include="Promise\Generic\MappingStatePromise.cs" />
+    <Compile Include="Promise\Generic\Invoke.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".travis.yml" />
@@ -59,4 +77,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Promise\" />
+    <Folder Include="Promise\Default\" />
+  </ItemGroup>
 </Project>

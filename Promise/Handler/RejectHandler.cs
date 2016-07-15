@@ -1,6 +1,6 @@
 ﻿using System;
 
-public struct RejectHandler {
-	public Action<Exception> callback;
+public struct RejectHandler<Z>  where Z : Exception {
+	public Action<Z> callback;
 	public IRejectable rejectable;
 }
