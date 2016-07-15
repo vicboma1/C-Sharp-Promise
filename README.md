@@ -1,6 +1,6 @@
 # C Sharp Promise  ![Build Status](https://travis-ci.org/Real-Serious-Games/C-Sharp-Promise.svg) ![Version](https://img.shields.io/badge/.Net%20-3.5-blue.svg) ![Version Status](https://img.shields.io/badge/Unity%203D-5.3.5f1-blue.svg) ![Version](https://img.shields.io/badge/Mono-v4.0.30319-blue.svg)
 
-<a href="">
+<a>
     <img src="https://promisesaplus.com/assets/logo-small.png" alt="Promises/A+ logo"
          title="Promises/A+ 1.0 compliant" align="right" />
 </a>
@@ -10,10 +10,15 @@ Inspired by Javascript promises.
 
 ## Recent Updates
 
+- 16 July 2016
+    - Test Generic Promise
+    
+
 - 15 July 2016
-    - Isolation Api IPromise_ & IPromise<T>
-    - Refactors Impl Promise_ & Promise<T>
+    - Isolation Api IPromise & IPromise<T>
+    - Refactors Impl Promise & Promise<T>
     - Improve inheritance
+
 
 - 14 July 2016
     - Mapping State Generic (Multiton pattern)
@@ -27,7 +32,6 @@ Inspired by Javascript promises.
 		- Guard
 		- LinqExts
 		- Record
-		- PromisesTests
 	- State Enum [PENDING - RESOLVED - REJECTED]
 	- Info [ID - NAME]
 	- Handler
