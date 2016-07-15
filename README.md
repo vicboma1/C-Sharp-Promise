@@ -10,6 +10,17 @@ Inspired by Javascript promises.
 
 ## Recent Updates
 
+- 15 July 2016
+    - Isolation Api IPromise_ & IPromise<T>
+    - Refactors Impl Promise_ & Promise<T>
+    - Improve inheritance
+
+- 14 July 2016
+    - Mapping State Generic (Multiton pattern)
+    - Hanlder Generic
+    - Invoke Resolved Handler
+    
+
 - 10 July 2016
 	- Test
 		- Assert
